@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: fluentd-elasticsearch
+  name: nagious-elasticsearch
   namespace: kube-system
   labels:
-    k8s-app: fluentd-logging
+    k8s-app: Aws-running-cluster
 spec:
   selector:
     matchLabels:
-      name: fluentd-elasticsearch
+      name: nagious-elasticsearch
   template:
     metadata:
       labels:
-        name: fluentd-elasticsearch
+        name: nagious-elasticsearch
     spec:
       tolerations:
       # this toleration is to have the daemonset runnable on 
@@ -21,8 +21,8 @@ spec:
         operator: Exists
         effect: NoSchedule
       containers:
-     —name: fluentd-elasticsearch
-        image: quay.io/fluentd_elasticsearch/fluentd:v2.5.2
+     —name: nagious-elasticsearch
+        image: quay.io/nagious_elasticsearch/nagious:v2.5.2
         resources:
           limits:
             memory: 200Mi
