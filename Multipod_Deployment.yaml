@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    whatwork: replica of 5 pods inside each of 5 a pod with running 2 containers
+  labels:
+    app: demodeploy
+  name: manishdeployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: demodeploy
+  template:
+    metadata:
+      labels:
+        app: demodeploy
+      name: 2podeach
+    spec:
+      containers:
+        - command:
+            - /bin/bash
+            - -c
+            - while true; do echo Manish-Hacker-Network; sleep 5 ; done
+          image: ubuntu
+          name: c00
+        - image: nginx:1.14.2
+          name: c01
+          ports:
+            - containerPort: 80
