@@ -1,0 +1,27 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod1
+spec:
+  containers:
+    - name: c01
+      image: nginx
+      command: ["/bin/bash", "-c", "while true; do echo Light-Yagami; sleep 5 ; done"]
+      ports:
+       - containerPort: 80
+       
+       
+       
+---
+#testpod2
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod3
+spec:
+  containers:
+    - name: c03
+      image: httpd
+      ports:
+       - containerPort: 80
